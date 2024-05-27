@@ -5,6 +5,7 @@ import { ArrowUpDown } from "lucide-react"
 import {client} from "@/lib/hono"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Actions } from "./actions"
 
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0];
 
@@ -38,6 +39,7 @@ export const columns: ColumnDef<ResponseType>[] = [
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    className="p-0 m-0"
                 >
                     Name
                     < ArrowUpDown className="ml-2 h-4 w-4" />
@@ -45,4 +47,8 @@ export const columns: ColumnDef<ResponseType>[] = [
             )
         },
     },
+    {
+        id: "actions",
+        cell: ({row}) => <Actions id={row.original.id} />
+    }
 ];
