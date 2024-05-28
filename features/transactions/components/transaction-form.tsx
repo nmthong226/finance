@@ -8,6 +8,7 @@ import { DatePicker } from "@/components/date-picker";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { AmountInput } from "@/components/amount-input";
+import { convertAmountToMiliunits } from "@/lib/utils";
 import {
     Form,
     FormControl,
@@ -62,7 +63,12 @@ export const TransactionForm = ({
         defaultValues: defaultValues,
     });
     const handleSubmit = (values: FormValues) => {
-        console.log(values)
+        const amount = parseFloat(values.amount);
+        const amountInMiliunits = convertAmountToMiliunits(amount);
+        onSubmit({
+            ...values,
+            amount: amountInMiliunits
+        })
     };
     const handleDelete = () => {
         onDelete?.();
@@ -186,7 +192,7 @@ export const TransactionForm = ({
                     className="w-full mb-4"
                     disabled={disabled}
                 >
-                    {id ? "Save changes" : "Create account"}
+                    {id ? "Save changes" : "Create transaction"}
                 </Button>
                 {!!id &&
                     <Button
@@ -197,7 +203,7 @@ export const TransactionForm = ({
                         variant={"outline"}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete account
+                        Delete transaction
                     </Button>
                 }
             </form>
