@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Card,
     CardContent,
@@ -15,8 +15,21 @@ import { useBulkDeleteTransactions } from '@/features/transactions/api/use-bulk-
 import { columns } from './columns'
 import { DataTable } from '@/components/data-table'
 import { Skeleton } from '@/components/ui/skeleton'
+import { UploadButton } from './upload-button'
+
+enum VARIANTS {
+    LIST = "LIST",
+    IMPORT = "IMPORT"
+};
+
+const INITIAL_IMPORT_RESULTS = {
+    data: [],
+    erros: [],
+    meta: {}
+}
 
 const TransactionsPage = () => {
+    const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
     const newTransaction = useNewTransaction();
     const deleteTransactions = useBulkDeleteTransactions();
     const transactionsQuery = useGetTransactions();
@@ -27,15 +40,24 @@ const TransactionsPage = () => {
             <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
                 <Card className='border-none drop-shadow-sm'>
                     <CardHeader>
-                        <Skeleton className='h-8 w-48'/>
+                        <Skeleton className='h-8 w-48' />
                     </CardHeader>
                     <CardContent>
                         <div className='h-[300px] w-full flex items-center justify-center'>
-                            <Loader2 className='size-6 text-slate-300 animate-spin'/>
+                            <Loader2 className='size-6 text-slate-300 animate-spin' />
                         </div>
                     </CardContent>
                 </Card>
             </div>
+        )
+    }
+    if (variant === VARIANTS.IMPORT) {
+        return (
+            <>
+                <div>
+                    This is a screen for import
+                </div>
+            </>
         )
     }
     return (
@@ -45,10 +67,15 @@ const TransactionsPage = () => {
                     <CardTitle className='text-xl line-clamp-1'>
                         Transaction History
                     </CardTitle>
-                    <Button size={"sm"} onClick={newTransaction.onOpen}>
-                        <Plus className='size-4 mr-2' />
-                        Add new
-                    </Button>
+                    <div className='flex items-center gap-x-2'>
+                        <Button size={"sm"} onClick={newTransaction.onOpen}>
+                            <Plus className='size-4 mr-2' />
+                            Add new
+                        </Button>
+                        <UploadButton
+                            onUpload={() => { }}
+                        />
+                    </div>
                 </CardHeader>
                 <CardContent>
                     <DataTable
@@ -57,7 +84,7 @@ const TransactionsPage = () => {
                         data={transactions}
                         onDelete={(row) => {
                             const ids = row.map((r) => r.original.id);
-                            deleteTransactions.mutate({ids});
+                            deleteTransactions.mutate({ ids });
                         }}
                         disabled={isDisabled}
                     />
