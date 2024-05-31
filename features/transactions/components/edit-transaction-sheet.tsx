@@ -35,8 +35,7 @@ export const EditTransactionSheet = () => {
     const transactionQuery = useGetTransaction(id);
     const editMutation = useEditTransaction(id);
     const deleteMutation = useDeleteTransaction(id);
-    const { isOpen, onClose } = useNewTransaction();
-    const createMutation = useCreateTransaction();
+
     const categoryQuery = useGetCategories();
     const categoryMutation = useCreateCategory();
     const onCreateCategory = (name: string) => {
@@ -72,21 +71,33 @@ export const EditTransactionSheet = () => {
             })
         }
     }}
-    const defaultValues = transactionQuery.data ? {
-        name: transactionQuery.data.name,
-    } : {
-        name: "",
-    }
     const isPending = 
         editMutation.isPending || 
         deleteMutation.isPending || 
         transactionQuery.isLoading ||
         categoryMutation.isPending || 
         accountMutation.isPending;
+
     const isLoading = 
         transactionQuery.isLoading ||
         categoryQuery.isLoading ||
         accountQuery.isLoading;
+
+    const defaultValues = transactionQuery.data ? {
+        accountId: transactionQuery.data.accountId,
+        categoryId: transactionQuery.data.categoryId,
+        amount: transactionQuery.data.amount.toString(),
+        date: transactionQuery.data.date ? new Date (transactionQuery.data.date) : new Date(),
+        payee: transactionQuery.data.payee,
+        notes: transactionQuery.data.notes,
+    } : {
+        accountId: "",
+        categoryId: "",
+        amount: "",
+        date: new Date(),
+        payee: "",
+        notes: ""
+    }
     return (
         <>
             <ConfirmDialog />
@@ -105,12 +116,15 @@ export const EditTransactionSheet = () => {
                             <Loader2 className="animate-spin size-4 text-muted-foreground" />
                         </div>) :
                         <TransactionForm
-                            key={id}
                             id={id}
-                            onSubmit={onSubmit}
-                            disabled={isPending}
                             defaultValues={defaultValues}
+                            onSubmit={onSubmit}
                             onDelete={onDelete}
+                            disabled={isPending}
+                            categoryOptions={categoryOptions}
+                            onCreateCategory={onCreateCategory}
+                            accountOptions={accountOptions}
+                            onCreateAccount={onCreateAccount}
                         />
                     }
                 </SheetContent>
