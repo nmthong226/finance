@@ -35,6 +35,11 @@ const TransactionsPage = () => {
     const transactionsQuery = useGetTransactions();
     const transactions = transactionsQuery.data || [];
     const isDisabled = transactionsQuery.isLoading || deleteTransactions.isPending;
+
+    const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
+    const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
+        setVariant(VARIANTS.IMPORT);
+    }
     if (transactionsQuery.isLoading) {
         return (
             <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
@@ -73,7 +78,7 @@ const TransactionsPage = () => {
                             Add new
                         </Button>
                         <UploadButton
-                            onUpload={() => { }}
+                            onUpload={onUpload}
                         />
                     </div>
                 </CardHeader>

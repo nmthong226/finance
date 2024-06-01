@@ -9,7 +9,7 @@ type Props = {
 export const UploadButton = ({ onUpload }: Props) => {
     const { CSVReader } = useCSVReader();
     return (
-        <CSVReader>
+        <CSVReader onUploadAccepted={onUpload}>
             {({getRootProps}: any) => (
                 <Button
                     size={"sm"}
