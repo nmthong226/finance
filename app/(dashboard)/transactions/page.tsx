@@ -16,6 +16,7 @@ import { columns } from './columns'
 import { DataTable } from '@/components/data-table'
 import { Skeleton } from '@/components/ui/skeleton'
 import { UploadButton } from './upload-button'
+import { ImportCard } from './import-card'
 
 enum VARIANTS {
     LIST = "LIST",
@@ -38,7 +39,12 @@ const TransactionsPage = () => {
 
     const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
     const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
+        setImportResults(results);
         setVariant(VARIANTS.IMPORT);
+    }
+    const onCancelImport = () => {
+        setImportResults(INITIAL_IMPORT_RESULTS);
+        setVariant(VARIANTS.LIST);
     }
     if (transactionsQuery.isLoading) {
         return (
@@ -60,7 +66,7 @@ const TransactionsPage = () => {
         return (
             <>
                 <div>
-                    This is a screen for import
+                    <ImportCard />
                 </div>
             </>
         )
