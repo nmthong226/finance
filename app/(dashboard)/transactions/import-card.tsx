@@ -87,6 +87,7 @@ export const ImportCard = ({
             amount: convertAmountToMiliunits(parseFloat(item.amount)),
             date: format(parse(item.date, dateFormat, new Date()), outputFormat)
         }))
+        onSubmit(formattedData);
     }
     return (
         <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
