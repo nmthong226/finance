@@ -1,6 +1,7 @@
 import { clerkMiddleware, getAuth } from '@hono/clerk-auth';
 import { Hono } from "hono"
 import { handle } from "hono/vercel";
+import summary from "./summary";
 import accounts from "./accounts";
 import categories from "./categories";
 import transactions from "./transactions";
@@ -19,7 +20,11 @@ app.get("/hello", clerkMiddleware(), (c) => {
   })
 })
 
-const routes = app.route("/accounts", accounts).route("/categories", categories).route("/transactions", transactions);
+const routes = app
+  .route("/summary", summary)
+  .route("/accounts", accounts)
+  .route("/categories", categories)
+  .route("/transactions", transactions)
 
 export const GET = handle(app);
 export const POST = handle(app);
