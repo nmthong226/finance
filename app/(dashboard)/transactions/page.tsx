@@ -25,7 +25,7 @@ enum VARIANTS {
 
 const INITIAL_IMPORT_RESULTS = {
     data: [],
-    erros: [],
+    errors: [],
     meta: {}
 }
 
@@ -39,6 +39,7 @@ const TransactionsPage = () => {
 
     const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS);
     const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
+        console.log({results});
         setImportResults(results);
         setVariant(VARIANTS.IMPORT);
     }
@@ -65,9 +66,11 @@ const TransactionsPage = () => {
     if (variant === VARIANTS.IMPORT) {
         return (
             <>
-                <div>
-                    <ImportCard />
-                </div>
+                <ImportCard 
+                    data={importResults.data}
+                    onCancel={onCancelImport}
+                    onSubmit={() => {}}
+                />
             </>
         )
     }
