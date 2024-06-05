@@ -34,8 +34,8 @@ export const useGetSummary = () => {
                 })),
                 days: data.days.map((day) => ({
                     ...day,
-                    income: day.income,
-                    expenses: day.expenses,
+                    income: convertAmountFromMiliunits(day.income),
+                    expenses: convertAmountFromMiliunits(day.expenses),
                 }))
             };
         }
