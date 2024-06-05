@@ -35,8 +35,8 @@ export function calculatePercentageChange(
 export function fillMissingDays(
   activeDays: {
     date: Date,
-    income: Number,
-    expenses: Number,
+    income: number,
+    expenses: number,
   }[],
   startDate: Date,
   endDate: Date,
@@ -78,4 +78,19 @@ export function formatDateRange (period?: Period) {
     return `${format(period.from, "LLL dd")} - ${format(period.to, "LLL dd, y")}`
   }
   return format(period.from, "LLL dd, y")
+}
+
+export function formatPercentage(
+  value: number,
+  options: { addPrefix?: boolean } = {
+    addPrefix: false,
+  },
+) {
+  const result = new Intl.NumberFormat("en-US", {
+    style: "percent",
+  }).format(value / 100);
+  if (options.addPrefix && value > 0) {
+    return `+${result}`;
+  }
+  return result;
 }
