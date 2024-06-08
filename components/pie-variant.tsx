@@ -34,6 +34,8 @@ export const PieVariant = ({ data }: Props) => {
                                         className="flex items-center space-x-2"
                                     >
                                         <span
+                                            className="size-2 rounded-full"
+                                            style={{ backgroundColor: entry.color}}
                                         />
                                     </li>
                                 ))}
