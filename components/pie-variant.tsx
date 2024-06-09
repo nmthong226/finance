@@ -7,6 +7,7 @@ import {
     Tooltip
 } from "recharts";
 import { formatPercentage } from "@/lib/utils";
+import { CategoryTooltip } from "@/components/category-tooltip";
 const COLORS = ["#0062FF", "#12C6FF", "#FF647F", "#FF9354"];
 
 type Props = {
@@ -37,12 +38,21 @@ export const PieVariant = ({ data }: Props) => {
                                             className="size-2 rounded-full"
                                             style={{ backgroundColor: entry.color}}
                                         />
+                                        <div className="space-x-1">
+                                            <span className="text-sm text-muted-foreground">
+                                                {entry.value}
+                                            </span>
+                                            <span className="text-sm">
+                                                {formatPercentage(entry.payload.percent *100)}
+                                            </span>
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
                         )
                     }}
                 />
+                <Tooltip content={<CategoryTooltip/>} />
                 <Pie
                     data={data}
                     cx="50%"
