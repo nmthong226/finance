@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
 } from '@clerk/nextjs';
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
 import { SheetProvider } from "@/providers/sheet-provider";
+import { viVN } from '@clerk/localizations';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={viVN}>
       <html lang="en">
         <body className={inter.className}>
           <QueryProvider>
