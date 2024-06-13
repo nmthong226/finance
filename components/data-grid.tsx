@@ -28,21 +28,21 @@ const DataGrid = () => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-2 mb-8'>
             <DataCard
-                title="Remaining"
+                title="Còn lại"
                 value={data?.remainingAmount}
                 percentageChange={data?.remainingChange}
                 icon={FaPiggyBank}
                 dateRange={dateRangeLabel}
             />
             <DataCard
-                title="Income"
+                title="Thu nhập"
                 value={data?.incomeAmount}
                 percentageChange={data?.incomeChange}
                 icon={FaArrowTrendUp}
                 dateRange={dateRangeLabel}
             />
             <DataCard
-                title="Expenses"
+                title="Chi phí"
                 value={data?.expensesAmount}
                 percentageChange={data?.expensesChange}
                 icon={FaArrowTrendDown}

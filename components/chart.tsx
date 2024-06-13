@@ -36,7 +36,7 @@ export const Chart = ({ data = [] }: Props) => {
         <Card className="border-none drop-shadow-sm">
             <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
                 <CardTitle className="text-xl line-clamp-1">
-                    Transactions
+                    Giao dịch
                 </CardTitle>
                 <Select
                     defaultValue={chartType}
@@ -50,7 +50,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <AreaChartIcon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Area chart
+                                    Biểu đồ vùng
                                 </p>
                             </div>
                         </SelectItem>
@@ -58,7 +58,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <BarChart2Icon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Bar chart
+                                    Biểu đồ cột
                                 </p>
                             </div>
                         </SelectItem>
@@ -66,7 +66,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <LineChartIcon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Line chart
+                                    Biểu đồ đường
                                 </p>
                             </div>
                         </SelectItem>

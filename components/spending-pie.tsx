@@ -34,7 +34,7 @@ export const SpendingPie = ({ data = [] }: Props) => {
         <Card className="border-none drop-shadow-sm">
             <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
                 <CardTitle className="text-xl line-clamp-1">
-                    Categories
+                    Danh mục
                 </CardTitle>
                 <Select
                     defaultValue={chartType}
@@ -48,7 +48,7 @@ export const SpendingPie = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <PieChart className="size-4 mr-2 shrink-0" />
                                 <p className="line-clamp-1">
-                                    Pie chart
+                                    Biểu đồ tròn
                                 </p>
                             </div>
                         </SelectItem>
@@ -56,7 +56,7 @@ export const SpendingPie = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <Radar className="size-4 mr-2 shrink-0" />
                                 <p className="line-clamp-1">
-                                    Radar chart
+                                    Biểu đồ radar
                                 </p>
                             </div>
                         </SelectItem>
@@ -64,7 +64,7 @@ export const SpendingPie = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <Target className="size-4 mr-2 shrink-0" />
                                 <p className="line-clamp-1">
-                                    Radial chart
+                                    Biểu đồ tâm
                                 </p>
                             </div>
                         </SelectItem>

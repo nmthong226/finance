@@ -57,7 +57,7 @@ export const AccountFilter = () => {
             </SelectTrigger>
             <SelectContent>
                 <SelectItem value="all">
-                    All accounts
+                    Tất cả tài khoản
                 </SelectItem>
                 {accounts?.map((account) => (
                     <SelectItem key={account.id} value={account.id}>

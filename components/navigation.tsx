@@ -10,23 +10,23 @@ import { Menu } from 'lucide-react'
 const routes = [
   {
     href: "/",
-    label: "Overview",
+    label: "Tổng quan",
   },
   {
     href: "/transactions",
-    label: "Transactions",
+    label: "Giao dịch",
   },
   {
     href: "/accounts",
-    label: "Accounts",
+    label: "Tài khoản",
   },
   {
     href: "/categories",
-    label: "Categories",
+    label: "Danh mục",
   },
   {
     href: "/settings",
-    label: "Settings",
+    label: "Cài đặt",
   },
 ]
 
