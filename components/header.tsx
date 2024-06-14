@@ -5,6 +5,7 @@ import { UserButton, ClerkLoading, ClerkLoaded } from '@clerk/nextjs'
 import { Loader2 } from 'lucide-react'
 import WelcomeMsg from '@/components/welcome-msg'
 import { Filters } from '@/components/filters'
+import { CountryButton } from '@/components/country-button'
 
 const Header = () => {
   return (
@@ -15,14 +16,17 @@ const Header = () => {
             <HeaderLogo />
             <Navigation />
           </div>
-          <ClerkLoaded>
-            <UserButton afterSignOutUrl='/' />
-          </ClerkLoaded>
-          <ClerkLoading>
-            <Loader2 className='size-8 animate-spin text-slate-400'/>
-          </ClerkLoading>
+          <div className='flex flex-row space-x-4 items-center'>
+            <CountryButton />
+            <ClerkLoaded>
+              <UserButton afterSignOutUrl='/' />
+            </ClerkLoaded>
+            <ClerkLoading>
+              <Loader2 className='size-8 animate-spin text-slate-400' />
+            </ClerkLoading>
+          </div>
         </div>
-        <WelcomeMsg/>
+        <WelcomeMsg />
         <Filters />
       </div>
     </header>

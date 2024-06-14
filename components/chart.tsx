@@ -15,9 +15,9 @@ import { AreaChartIcon, BarChart2Icon, FileSearch, LineChartIcon, Loader2 } from
 import { AreaVariant } from "@/components/area-variant";
 import { BarVariant } from "@/components/bar-variant";
 import { useState } from "react";
-import { AreaChart } from "recharts";
 import { LineVariant } from "./line-variant";
 import { Skeleton } from "./ui/skeleton";
+import { useTranslations } from "next-intl";
 
 type Props = {
     data?: {
@@ -32,11 +32,12 @@ export const Chart = ({ data = [] }: Props) => {
     const onTypeChange = (type: string) => {
         setCharType(type);
     }
+    const t = useTranslations('DataChart');
     return (
         <Card className="border-none drop-shadow-sm">
             <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
                 <CardTitle className="text-xl line-clamp-1">
-                    Giao dịch
+                    {t('transactions')}
                 </CardTitle>
                 <Select
                     defaultValue={chartType}
@@ -50,7 +51,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <AreaChartIcon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Biểu đồ vùng
+                                    {t('area-chart')}
                                 </p>
                             </div>
                         </SelectItem>
@@ -58,7 +59,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <BarChart2Icon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Biểu đồ cột
+                                    {t('bar-chart')}
                                 </p>
                             </div>
                         </SelectItem>
@@ -66,7 +67,7 @@ export const Chart = ({ data = [] }: Props) => {
                             <div className="flex items-center">
                                 <LineChartIcon className="size-4 mr-2 shrink-0"/>
                                 <p className="line-clamp-1">
-                                    Biểu đồ đường
+                                    {t('line-chart')}
                                 </p>
                             </div>
                         </SelectItem>
@@ -78,7 +79,7 @@ export const Chart = ({ data = [] }: Props) => {
                     <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
                         <FileSearch className="size-6 text-muted-foreground" />
                         <p className="text-muted-foreground text-sm">
-                            No data for this period
+                            {t('not-found')}
                         </p>
                     </div>
                 ) : (

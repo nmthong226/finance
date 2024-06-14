@@ -1,0 +1,39 @@
+{
+    "Index": {
+        "title": "Hello World!"
+    },
+    "Navigations": {
+        "general": "Overview",
+        "transactions": "Transactions",
+        "accounts": "Accounts",
+        "categories": "Categories",
+        "setup": "Setup"
+    },
+    "WelcomeMsg": {
+        "title": "Welcome back",
+        "intro": "This is your financial report page"
+
+    },
+    "Filter": {
+        "all-accounts": "All accounts"
+    },
+    "DataGrid": {
+        "remaining": "Remaining",
+        "income": "Income",
+        "expenses": "Expenses"
+    },
+    "DataChart": {
+        "transactions": "Transactions",
+        "area-chart": "Area chart",
+        "bar-chart": "Bar chart",
+        "line-chart": "Line chart",
+        "not-found": "No data for this period"
+    },
+    "DataPie": {
+        "categories": "Categories",
+        "radar-chart": "Radar chart",
+        "radial-chart": "Radial chart",
+        "pie-chart": "Pie chart",
+        "not-found": "No data for this period"
+    }
+}

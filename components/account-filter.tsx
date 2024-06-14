@@ -14,6 +14,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select"
+import { useTranslations } from "next-intl";
 
 export const AccountFilter = () => {
     const router = useRouter();
@@ -44,6 +45,7 @@ export const AccountFilter = () => {
         }, { skipNull: true, skipEmptyString: true });
         router.push(url);
     }
+    const t = useTranslations('Filter')
     return (
         <Select
             value={accountId}
@@ -57,7 +59,7 @@ export const AccountFilter = () => {
             </SelectTrigger>
             <SelectContent>
                 <SelectItem value="all">
-                    Tất cả tài khoản
+                    {t('all-accounts')}
                 </SelectItem>
                 {accounts?.map((account) => (
                     <SelectItem key={account.id} value={account.id}>

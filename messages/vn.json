@@ -1,0 +1,38 @@
+{
+    "Index": {
+        "title": "Xin chào!"
+    },
+    "Navigations": {
+        "general": "Tổng quan",
+        "transactions": "Giao dịch",
+        "accounts": "Tài khoản",
+        "categories": "Danh mục",
+        "setup": "Cài đặt"
+    },
+    "WelcomeMsg": {
+        "title": "Xin chào",
+        "intro": "Đây là trang báo cáo tài chính của bạn"
+    },
+    "Filter": {
+        "all-accounts": "Tất cả tài khoản"
+    },
+    "DataGrid": {
+        "remaining": "Còn lại",
+        "income": "Thu nhập",
+        "expenses": "Chi phí"
+    },
+    "DataChart": {
+        "transactions": "Giao dịch",
+        "area-chart": "Biểu đồ vùng",
+        "bar-chart": "Biểu đồ cột",
+        "line-chart": "Biểu đồ đường",
+        "not-found": "Hiện tại chưa có dữ liệu"
+    },
+    "DataPie": {
+        "categories": "Danh mục",
+        "radar-chart": "Biểu đồ radar",
+        "radial-chart": "Biểu đồ tâm",
+        "pie-chart": "Biểu đồ tròn",
+        "not-found": "Hiện tại chưa có dữ liệu"
+    }
+}

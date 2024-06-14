@@ -6,6 +6,7 @@ import { useGetSummary } from '@/features/summary/api/use-get-summary';
 import { DataCard, DataCardLoading } from '@/components/data-card';
 import { FaPiggyBank } from "react-icons/fa";
 import { FaArrowTrendUp, FaArrowTrendDown } from "react-icons/fa6";
+import { useTranslations } from 'next-intl';
 
 
 const DataGrid = () => {
@@ -14,7 +15,7 @@ const DataGrid = () => {
     const to = params.get("to") || undefined;
     const from = params.get("from") || undefined;
     const dateRangeLabel = formatDateRange({ to, from });
-
+    const t = useTranslations('DataGrid');
     if (isLoading) {
         return (
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-2 mb-8'>
@@ -28,21 +29,21 @@ const DataGrid = () => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-2 mb-8'>
             <DataCard
-                title="Còn lại"
+                title={t('remaining')}
                 value={data?.remainingAmount}
                 percentageChange={data?.remainingChange}
                 icon={FaPiggyBank}
                 dateRange={dateRangeLabel}
             />
             <DataCard
-                title="Thu nhập"
+                title={t('income')}
                 value={data?.incomeAmount}
                 percentageChange={data?.incomeChange}
                 icon={FaArrowTrendUp}
                 dateRange={dateRangeLabel}
             />
             <DataCard
-                title="Chi phí"
+                title={t('expenses')}
                 value={data?.expensesAmount}
                 percentageChange={data?.expensesChange}
                 icon={FaArrowTrendDown}

@@ -1,34 +1,39 @@
 "use client"
 import React, { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import NavButton from './nav-button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useMedia } from "react-use"
 import { Button } from './ui/button'
 import { Menu } from 'lucide-react'
 
-const routes = [
-  {
-    href: "/",
-    label: "Tổng quan",
-  },
-  {
-    href: "/transactions",
-    label: "Giao dịch",
-  },
-  {
-    href: "/accounts",
-    label: "Tài khoản",
-  },
-  {
-    href: "/categories",
-    label: "Danh mục",
-  },
-  {
-    href: "/settings",
-    label: "Cài đặt",
-  },
-]
+const getRoutes = (locale: string) => {
+  const t = useTranslations('Navigations');
+  const routes = [
+    {
+      href: "/",
+      label: t('general'),
+    },
+    {
+      href: `/${locale}/transactions`,
+      label: t('transactions'),
+    },
+    {
+      href: `/${locale}/accounts`,
+      label: t('accounts'),
+    },
+    {
+      href: `/${locale}/categories`,
+      label: t('categories'),
+    },
+    {
+      href: `/${locale}/settings`,
+      label: t('setup'),
+    },
+  ]
+  return routes;
+}
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +44,8 @@ const Navigation = () => {
     router.push(href);
     setIsOpen(false);
   }
+  const getLanguagePart = usePathname().split("/");
+  const routes = getRoutes(getLanguagePart[1]);
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -49,14 +56,14 @@ const Navigation = () => {
             className='font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0
             focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition'
           >
-            <Menu className='size-4'/>
+            <Menu className='size-4' />
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
           <nav className='flex flex-col gap-y-2 pt-6'>
             {routes.map((route) => {
               return (
-                <Button 
+                <Button
                   key={route.href}
                   variant={route.href === pathName ? "secondary" : "ghost"}
                   onClick={() => onClick(route.href)}
@@ -76,7 +83,7 @@ const Navigation = () => {
       {
         routes.map((route) => {
           return (
-            <NavButton 
+            <NavButton
               key={route.href}
               href={route.href}
               label={route.label}
