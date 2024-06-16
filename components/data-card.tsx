@@ -10,6 +10,7 @@ import {
     CardTitle
 } from "@/components/ui/card";
 import { CountUp } from "./count-up";
+import { useTranslations } from "next-intl";
 
 const boxVariant = cva(
     "shrink-0 rounded-md p-3",
@@ -64,6 +65,7 @@ export const DataCard = ({
     dateRange,
     percentageChange = 0,
 }: DataCardProps) => {
+    const t = useTranslations('DataGrid');
     return (
         <Card className="border-none drop-shadow-sm">
             <CardHeader className="flex flex-row items-center justify-between gap-x-4">
@@ -94,7 +96,7 @@ export const DataCard = ({
                     percentageChange > 0 && "text-emerald-500",
                     percentageChange < 0 && "text-rose-500",
                 )}>
-                    {formatPercentage(percentageChange, { addPrefix: true })} from last period
+                    {formatPercentage(percentageChange, { addPrefix: true })} {t('indicator')}
                 </p>
             </CardContent>
         </Card>
