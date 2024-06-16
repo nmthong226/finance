@@ -20,7 +20,8 @@
     "DataGrid": {
         "remaining": "Remaining",
         "income": "Income",
-        "expenses": "Expenses"
+        "expenses": "Expenses",
+        "indicator": "from last period"
     },
     "DataChart": {
         "transactions": "Transactions",

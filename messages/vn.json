@@ -19,7 +19,8 @@
     "DataGrid": {
         "remaining": "Còn lại",
         "income": "Thu nhập",
-        "expenses": "Chi phí"
+        "expenses": "Chi phí",
+        "indicator": "so với kì trước"
     },
     "DataChart": {
         "transactions": "Giao dịch",
