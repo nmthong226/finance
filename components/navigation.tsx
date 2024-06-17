@@ -12,7 +12,7 @@ const getRoutes = (locale: string) => {
   const t = useTranslations('Navigations');
   const routes = [
     {
-      href: "/",
+      href: `/${locale}`,
       label: t('general'),
     },
     {
