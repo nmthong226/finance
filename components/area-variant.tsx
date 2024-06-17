@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { enUS, vi } from "date-fns/locale";
 import {
     Tooltip,
     AreaChart,
@@ -8,6 +9,7 @@ import {
     XAxis
 } from "recharts";
 import { CustomToolTip } from "@/components/custom-tooltip";
+import { usePathname } from "next/navigation";
 
 type Props = {
     data?: {
@@ -18,6 +20,9 @@ type Props = {
 };
 
 export const AreaVariant = ({ data }: Props) => {
+    const getLanguagePart = usePathname().split("/");
+    const locale = getLanguagePart[1];
+    const language = locale === "vn" ? vi : enUS;
     return (
         <ResponsiveContainer width="100%" height={350}>
             <AreaChart data={data}>
@@ -36,7 +41,7 @@ export const AreaVariant = ({ data }: Props) => {
                     axisLine={false}
                     tickLine={false}
                     dataKey="date"
-                    tickFormatter={(value) => format(value, "dd MMM")}
+                    tickFormatter={(value) => format(value, "dd MMM", {locale: language})}
                     style={{ fontSize: "12px" }}
                     tickMargin={16}
                 />
