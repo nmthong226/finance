@@ -6,13 +6,23 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select"
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export const CountryButton = () => {
-
+    const router = useRouter();
+    const localActive = useLocale();
+    const onSelectChange = () => {
+        if (localActive === "vn") {
+            router.replace(`/en`)
+        } else {
+            router.replace(`/vn`)
+        }
+    }
     return (
         <Select
-            value={"vn"}
-            onValueChange={() => { }}
+            value={localActive}
+            onValueChange={onSelectChange}
             disabled={false}
         >
             <SelectTrigger
