@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { formatDateRange } from '@/lib/utils';
 import { useGetSummary } from '@/features/summary/api/use-get-summary';
 import { DataCard, DataCardLoading } from '@/components/data-card';
@@ -14,7 +14,9 @@ const DataGrid = () => {
     const params = useSearchParams();
     const to = params.get("to") || undefined;
     const from = params.get("from") || undefined;
-    const dateRangeLabel = formatDateRange({ to, from });
+    const getLanguagePart = usePathname().split("/");
+    const locale = getLanguagePart[1];
+    const dateRangeLabel = formatDateRange({ to, from }, locale);
     const t = useTranslations('DataGrid');
     if (isLoading) {
         return (
@@ -25,7 +27,6 @@ const DataGrid = () => {
             </div>
         )
     }
-
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 pb-2 mb-8'>
             <DataCard
