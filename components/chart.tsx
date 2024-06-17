@@ -25,9 +25,10 @@ type Props = {
         income: number;
         expenses: number;
     }[];
+    activeLocale: string;
 };
 
-export const Chart = ({ data = [] }: Props) => {
+export const Chart = ({ data = [], activeLocale }: Props) => {
     const [chartType, setCharType] = useState("area");
     const onTypeChange = (type: string) => {
         setCharType(type);
@@ -84,9 +85,9 @@ export const Chart = ({ data = [] }: Props) => {
                     </div>
                 ) : (
                     <>
-                        {chartType === "area" && <AreaVariant data={data} />}
-                        {chartType === "bar" && <BarVariant data={data} />}
-                        {chartType === "line" && <LineVariant data={data} />}
+                        {chartType === "area" && <AreaVariant data={data} activeLocale={activeLocale}/>}
+                        {chartType === "bar" && <BarVariant data={data} activeLocale={activeLocale}/>}
+                        {chartType === "line" && <LineVariant data={data} activeLocale={activeLocale}/>}
                     </>
                 )}
             </CardContent>
