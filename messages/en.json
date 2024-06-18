@@ -15,7 +15,9 @@
 
     },
     "Filter": {
-        "all-accounts": "All accounts"
+        "all-accounts": "All accounts",
+        "date-reset": "Reset",
+        "date-apply": "Apply"
     },
     "DataGrid": {
         "remaining": "Remaining",

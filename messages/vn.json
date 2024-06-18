@@ -14,7 +14,9 @@
         "intro": "Đây là trang báo cáo tài chính của bạn"
     },
     "Filter": {
-        "all-accounts": "Tất cả tài khoản"
+        "all-accounts": "Tất cả tài khoản",
+        "date-reset": "Reset",
+        "date-apply": "Áp dụng"
     },
     "DataGrid": {
         "remaining": "Còn lại",

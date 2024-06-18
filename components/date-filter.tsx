@@ -9,9 +9,7 @@ import {
     useRouter,
     useSearchParams,
 } from "next/navigation";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { useGetSummary } from "@/features/summary/api/use-get-summary";
-import { cn, formatDateRange } from "@/lib/utils";
+import { formatDateRange } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -20,6 +18,8 @@ import {
     PopoverTrigger,
     PopoverClose
 } from "@/components/ui/popover"
+import { useLocale, useTranslations } from "next-intl";
+import { enUS, vi } from "date-fns/locale";
 
 export const DateFilter = () => {
     const router = useRouter();
@@ -50,7 +50,10 @@ export const DateFilter = () => {
     const onReset = () => {
         setDate(undefined);
         pushToUrl(undefined);
-    }
+    };
+    const t = useTranslations('Filter');
+    const locale = useLocale();
+    const calendarLanguage = locale === "vn" ? vi : enUS;
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -60,7 +63,7 @@ export const DateFilter = () => {
                     variant={"outline"}
                     className="lg:w-auto w-full h-9 rounded-md px-3 font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus:ring-offset-0 focus:ring-transparent outline-none text-white focus:bg-white/30 transition"
                 >
-                    <span>{formatDateRange(paramState)}</span>
+                    <span>{formatDateRange(paramState, locale)}</span>
                     <ChevronDown className="ml-2 size-4 opacity-50"/>
                 </Button>
             </PopoverTrigger>
@@ -73,6 +76,7 @@ export const DateFilter = () => {
                     selected={date}
                     onSelect={setDate}
                     numberOfMonths={2}
+                    locale={calendarLanguage}
                 />
                 <div className="p-4 w-full flex items-center gap-x-2">
                     <PopoverClose asChild>
@@ -82,7 +86,7 @@ export const DateFilter = () => {
                             className="w-full"
                             variant={"outline"}
                         >
-                            Reset
+                            {t('date-reset')}
                         </Button>
                     </PopoverClose>
                     <PopoverClose asChild>
@@ -92,7 +96,7 @@ export const DateFilter = () => {
                             className="w-full"
                             variant={"outline"}
                         >
-                            Apply
+                            {t('date-apply')}
                         </Button>
                     </PopoverClose>
                 </div>
