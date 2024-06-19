@@ -38,5 +38,8 @@
         "radial-chart": "Radial chart",
         "pie-chart": "Pie chart",
         "not-found": "No data for this period"
+    },
+    "TransactionHistory": {
+        "title": "Transaction History"
     }
 }

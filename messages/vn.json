@@ -37,5 +37,8 @@
         "radial-chart": "Biểu đồ tâm",
         "pie-chart": "Biểu đồ tròn",
         "not-found": "Hiện tại chưa có dữ liệu"
+    },
+    "TransactionHistory": {
+        "title": "Lịch Sử Giao Dịch"
     }
 }

@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
 import { SheetProvider } from "@/providers/sheet-provider";
-import { viVN } from '@clerk/localizations';
+import { enUS, viVN } from '@clerk/localizations';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -29,8 +29,9 @@ export default async function RootLayout({
   }
 }>) {
   const messages = await getMessages();
+  const authLanguage = locale === "vn" ? viVN : enUS;
   return (
-    <ClerkProvider localization={viVN}>
+    <ClerkProvider localization={authLanguage}>
       <html lang={locale}>
         <body className={inter.className}>
           <NextIntlClientProvider messages={messages}>

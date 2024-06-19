@@ -20,6 +20,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { UploadButton } from './upload-button'
 import { ImportCard } from './import-card'
 import { toast } from 'sonner'
+import { useTranslations } from 'next-intl'
 
 enum VARIANTS {
     LIST = "LIST",
@@ -93,7 +94,8 @@ const TransactionsPage = () => {
                 />
             </>
         )
-    }
+    };
+    //const t = useTranslations('TransactionHistory');
     return (
         <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
             <Card className='border-none drop-shadow-sm'>
