@@ -40,6 +40,25 @@
         "not-found": "No data for this period"
     },
     "TransactionHistory": {
-        "title": "Transaction History"
+        "title": "Transaction History",
+        "add": "Add new",
+        "import": "Import",
+        "delete": "Delete",
+        "no-result": "No results",
+        "own": "of",
+        "select-show": "row(s) selected.",
+        "selected": "selected",
+        "filter": "Filter",
+        "filter-key": "payee",
+        "previous": "Previous",
+        "next": "Next",
+        "confirm-question": "Are you sure?",
+        "confirm-content": "You are about to perform a bulk delete",
+        "date-column": "Date",
+        "category-column": "Category",
+        "payee-column": "Payee",
+        "account-column": "Account",
+        "amount-column": "Amount",
+        "import-button": "Import"
     }
 }

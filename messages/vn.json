@@ -39,6 +39,25 @@
         "not-found": "Hiện tại chưa có dữ liệu"
     },
     "TransactionHistory": {
-        "title": "Lịch Sử Giao Dịch"
+        "title": "Lịch Sử Giao Dịch",
+        "add": "Thêm GD",
+        "import": "Nhập GD",
+        "delete": "Xóa",
+        "no-result": "Không có kết quả",
+        "own": "trong",
+        "select-show": "hàng được chọn.",
+        "selected": "được chọn",
+        "filter": "Lọc theo",
+        "filter-key": "người nhận",
+        "previous": "Trang trước",
+        "next": "Trang sau",
+        "confirm-question": "Bạn chắc chứ?",
+        "confirm-content": "Bạn đang thực hiện việc xóa nhiều dữ liệu",
+        "date-column": "Ngày",
+        "category-column": "Danh mục",
+        "payee-column": "Người nhận",
+        "account-column": "Tài khoản",
+        "amount-column": "Số tiền",
+        "import-button": "Nhập GD"
     }
 }
