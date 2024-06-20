@@ -14,8 +14,10 @@ import { useBulkDeleteAccounts } from '@/features/accounts/api/use-bulk-delete'
 import { columns } from './columns'
 import { DataTable } from '@/components/data-table'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from 'next-intl'
 
 const AccountsPage = () => {
+    const t = useTranslations("TransactionHistory");
     const newAccount = useNewAccount();
     const deleteAccounts = useBulkDeleteAccounts();
     const accountsQuery = useGetAccounts();

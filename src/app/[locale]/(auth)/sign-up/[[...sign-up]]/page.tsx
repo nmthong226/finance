@@ -19,11 +19,14 @@ export default function Page() {
             <Loader2 className="animate-spin text-muted-foreground" />
           </ClerkLoading>
         </div>
-        <div className="flex justify-end mt-8 items-center">
-          <div className="">
-            Terms of service
+        <div className="flex lg:flex-row flex-col justify-between mt-8 items-center bg-slate-100 rounded-xl w-96">
+          <div className="mx-2">
+            Home Page
           </div>
-          <CountryButton variant={"dark"} />
+          <div className="mx-2">
+            Contact
+          </div>
+          <CountryButton variant={"ghost"} />
         </div>
       </div>
       <div className="h-full bg-blue-600 hidden lg:flex items-center justify-center">

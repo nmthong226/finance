@@ -14,8 +14,10 @@ import { useBulkDeleteCategories } from '@/features/categories/api/use-bulk-dele
 import { columns } from './columns'
 import { DataTable } from '@/components/data-table'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useTranslations } from 'next-intl'
 
 const CategoriesPage = () => {
+    const t = useTranslations('TransactionHistory');
     const newCategory = useNewCategory();
     const deleteCategories = useBulkDeleteCategories();
     const categoriesQuery = useGetCategories();
