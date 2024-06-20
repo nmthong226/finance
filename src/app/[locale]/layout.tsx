@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
 import { SheetProvider } from "@/providers/sheet-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { enUS, viVN } from '@clerk/localizations';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 import { NextIntlClientProvider } from 'next-intl';
@@ -36,13 +37,20 @@ export default async function RootLayout({
         <body className={inter.className}>
           <NextIntlClientProvider messages={messages}>
             <QueryProvider>
-              <SheetProvider />
-              <Toaster />
-              {children}
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <SheetProvider />
+                <Toaster />
+                {children}
+              </ThemeProvider>
             </QueryProvider>
           </NextIntlClientProvider>
         </body>
       </html>
-    </ClerkProvider>
+    </ClerkProvider >
   );
 }
