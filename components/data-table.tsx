@@ -26,6 +26,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { useTranslations } from "next-intl"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -42,9 +43,10 @@ export function DataTable<TData, TValue>({
     onDelete,
     disabled,
 }: DataTableProps<TData, TValue>) {
+    const t = useTranslations('TransactionHistory');
     const [ConfirmDialog, confirm] = useConfirm(
-        "Are you sure?",
-        "You are about to perform a bulk delete"
+        t('confirm-question'),
+        t('confirm-content')
     )
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -73,7 +75,7 @@ export function DataTable<TData, TValue>({
             <ConfirmDialog />
             <div className="flex items-center py-4">
                 <Input
-                    placeholder={`Filter ${filterKey}...`}
+                    placeholder={`${t('filter')} ${filterKey}...`}
                     value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn(filterKey)?.setFilterValue(event.target.value)
@@ -95,7 +97,7 @@ export function DataTable<TData, TValue>({
                         }}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete ({table.getFilteredSelectedRowModel().rows.length})
+                        {t('delete')} ({table.getFilteredSelectedRowModel().rows.length})
                     </Button>
                 )}
             </div>
@@ -124,7 +126,7 @@ export function DataTable<TData, TValue>({
                             table.getRowModel().rows.map((row) => (
                                 <TableRow
                                     key={row.id}
-                                    data-state={row.getIsSelected() && "selected"}
+                                    data-state={row.getIsSelected() && `${t('selected')}`}
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}>
@@ -136,7 +138,7 @@ export function DataTable<TData, TValue>({
                         ) : (
                             <TableRow>
                                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    No results.
+                                    {t('no-result')}
                                 </TableCell>
                             </TableRow>
                         )}
@@ -145,8 +147,8 @@ export function DataTable<TData, TValue>({
             </div>
             <div className="flex items-center justify-end space-x-2 py-4">
                 <div className="flex-1 text-xs text-muted-foreground xs:text-sm">
-                    {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                    {table.getFilteredRowModel().rows.length} row(s) selected.
+                    {table.getFilteredSelectedRowModel().rows.length} {t('own')}{" "}
+                    {table.getFilteredRowModel().rows.length} {t('select-show')}
                 </div>
                 <Button
                     variant="outline"
@@ -154,7 +156,7 @@ export function DataTable<TData, TValue>({
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
                 >
-                    Previous
+                    {t('previous')}
                 </Button>
                 <Button
                     variant="outline"
@@ -162,7 +164,7 @@ export function DataTable<TData, TValue>({
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
                 >
-                    Next
+                    {t('next')}
                 </Button>
             </div>
         </div>

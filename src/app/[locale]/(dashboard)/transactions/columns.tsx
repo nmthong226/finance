@@ -11,6 +11,8 @@ import { formatCurrency } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { AccountColumn } from "./account-column"
 import { CategoryColumn } from "./category-column"
+import { useLocale, useTranslations } from "next-intl"
+import { enUS, vi } from "date-fns/locale"
 
 export type ResponseType = InferResponseType<typeof client.api.transactions.$get, 200>["data"][0];
 
@@ -40,22 +42,25 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "date",
         header: ({ column }) => {
+            const t = useTranslations('TransactionHistory');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Date
+                    {t('date-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
         },
         cell: ({ row }) => {
             const date = row.getValue("date") as Date;
+            const locale = useLocale();
+            const dateFormat = locale === "vn" ? vi : enUS;
             return (
                 <span>
-                    {format(date, "dd MMMM, yyyy")}
+                    {format(date, "dd MMMM, yyyy", { locale: dateFormat})}
                 </span>
             )
         }
@@ -63,13 +68,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "category",
         header: ({ column }) => {
+            const t = useTranslations('TransactionHistory');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Category
+                    {t('category-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
@@ -87,13 +93,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "payee",
         header: ({ column }) => {
+            const t = useTranslations('TransactionHistory');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Payee
+                    {t('account-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
@@ -102,13 +109,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "amount",
         header: ({ column }) => {
+            const t = useTranslations('TransactionHistory');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Amount
+                    {t('amount-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
@@ -128,13 +136,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "account",
         header: ({ column }) => {
+            const t = useTranslations('TransactionHistory');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Account
+                    {t('account-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )

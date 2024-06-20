@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react'
 import {
     Card,
@@ -34,6 +34,7 @@ const INITIAL_IMPORT_RESULTS = {
 }
 
 const TransactionsPage = () => {
+    const t = useTranslations("TransactionHistory");
     const [AccountDialog, confirm] = useSelectAccount();
     const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
     const newTransaction = useNewTransaction();
@@ -95,13 +96,12 @@ const TransactionsPage = () => {
             </>
         )
     };
-    //const t = useTranslations('TransactionHistory');
     return (
         <div className='max-w-screen-2xl mx-auto w-full pb-10 -mt-24'>
             <Card className='border-none drop-shadow-sm'>
                 <CardHeader className='gap-y-2 md:flex-row md:items-center md:justify-between'>
                     <CardTitle className='text-xl line-clamp-1'>
-                        Transaction History
+                        {t('title')}
                     </CardTitle>
                     <div className='flex flex-col md:flex-row items-center gap-y-2 gap-x-2'>
                         <Button 
@@ -110,7 +110,7 @@ const TransactionsPage = () => {
                             className='w-full md:w-auto'
                         >
                             <Plus className='size-4 mr-2' />
-                            Add new
+                            {t('add')}
                         </Button>
                         <UploadButton
                             onUpload={onUpload}
@@ -119,7 +119,7 @@ const TransactionsPage = () => {
                 </CardHeader>
                 <CardContent>
                     <DataTable
-                        filterKey='payee'
+                        filterKey={t('filter-key')}
                         columns={columns}
                         data={transactions}
                         onDelete={(row) => {

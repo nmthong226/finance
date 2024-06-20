@@ -5,6 +5,7 @@ import { UserButton, ClerkLoading, ClerkLoaded } from '@clerk/nextjs'
 import { Loader2 } from 'lucide-react'
 import WelcomeMsg from '@/components/welcome-msg'
 import { Filters } from '@/components/filters'
+import { ModeToggle } from '@/components/theme-button'
 import { CountryButton } from '@/components/country-button'
 import { useLocale } from 'next-intl'
 
@@ -18,8 +19,9 @@ const Header = () => {
             <HeaderLogo />
             <Navigation />
           </div>
-          <div className='flex flex-row space-x-4 items-center'>
-            <CountryButton />
+          <div className='flex flex-row space-x-4 items-center bg-white/10 rounded-lg px-2'>
+            <ModeToggle/>
+            <CountryButton variant={"transparent"} />
             <ClerkLoaded>
               <UserButton afterSignOutUrl='/' />
             </ClerkLoaded>
