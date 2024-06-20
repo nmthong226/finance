@@ -6,17 +6,42 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select"
+import { cn } from "@/lib/utils";
+import { VariantProps, cva } from "class-variance-authority";
 import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-export const CountryButton = () => {
+const buttonVariant = cva(
+    "lg:w-auto w-full h-9 rounded-md px-3 font-normal border-none focus:ring-offset-0 focus:ring-transparent outline-none transition",
+    {
+        variants: {
+            variant: {
+                default: "bg-white/10 hover:bg-white/20 hover:text-white text-white focus:bg-white/30",
+                light: "bg-white/10 hover:bg-white/20 hover:text-white text-white focus:bg-white/30",
+                dark: "bg-black/10 hover:bg-black/20 hover:text-black text-black focus:bg-black/30"
+            }
+        },
+        defaultVariants: {
+            variant: "default",
+        }
+    }
+)
+
+type ButtonVariant = VariantProps<typeof buttonVariant>
+
+interface ButtonProps extends ButtonVariant {}
+
+export const CountryButton = (variant: ButtonProps) => {
     const router = useRouter();
     const localActive = useLocale();
+    const path = usePathname();
     const onSelectChange = () => {
         if (localActive === "vn") {
-            router.replace(`/en`)
+            const newPathname = path.replace(/\/(en|vn)\//, `/en/`);
+            router.replace(newPathname);
         } else {
-            router.replace(`/vn`)
+            const newPathname = path.replace(/\/(en|vn)\//, `/vn/`);
+            router.replace(newPathname);
         }
     }
     return (
@@ -26,7 +51,7 @@ export const CountryButton = () => {
             disabled={false}
         >
             <SelectTrigger
-                className="lg:w-auto w-full h-9 rounded-md px-3 font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus:ring-offset-0 focus:ring-transparent outline-none text-white focus:bg-white/30 transition"
+                className={cn(buttonVariant(variant))}
             >
                 <SelectValue placeholder="Select language" />
             </SelectTrigger>
