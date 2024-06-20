@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { SignIn, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { useLocale } from "next-intl";
+import { CountryButton } from "@/components/country-button";
 
 export default function Page() {
   const locale = useLocale();
@@ -17,6 +18,15 @@ export default function Page() {
           <ClerkLoading>
             <Loader2 className="animate-spin text-muted-foreground"/>
           </ClerkLoading>
+        </div>
+        <div className="flex lg:flex-row flex-col justify-between lg:mt-20 items-center bg-slate-100 rounded-xl w-96">
+          <div className="mx-2">
+            Home Page
+          </div>
+          <div className="mx-2">
+            Contact
+          </div>
+          <CountryButton variant={"ghost"} />
         </div>
       </div>
       <div className="h-full bg-blue-600 hidden lg:flex items-center justify-center">
