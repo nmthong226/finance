@@ -43,6 +43,7 @@
         "title": "Transaction History",
         "add": "Add new",
         "import": "Import",
+        "edit": "Edit",
         "delete": "Delete",
         "no-result": "No results",
         "own": "of",
@@ -58,7 +59,14 @@
         "category-column": "Category",
         "payee-column": "Payee",
         "account-column": "Account",
+        "date-select": "Pick a date",
         "amount-column": "Amount",
-        "import-button": "Import"
+        "import-button": "Import",
+        "create-transaction-title": "New Transaction",
+        "account-field": "Account",
+        "category-field": "Category",
+        "payee-field": "Payee",
+        "amount-field": "Amount",
+        "note-field": "Notes"
     }
 }
