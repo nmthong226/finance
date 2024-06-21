@@ -10,6 +10,7 @@ import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 import { AccountForm } from "@/features/accounts/components/account-form";
 import { insertAccountSchema } from "@/db/schema";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertAccountSchema.pick({
     name: true,
@@ -18,6 +19,7 @@ const formSchema = insertAccountSchema.pick({
 type FormValues = z.input<typeof formSchema>
 
 export const NewAccountSheet = () => {
+    const t = useTranslations('TransitionHistory');
     const { isOpen, onClose } = useNewAccount();
     const mutation = useCreateAccount();
     const onSubmit = (values: FormValues) => {
