@@ -18,6 +18,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { insertTransactionSchema } from "@/db/schema";
+import { useLocale, useTranslations } from "next-intl";
 
 const formSchema = z.object({
     date: z.coerce.date(),
@@ -58,6 +59,8 @@ export const TransactionForm = ({
     onCreateAccount,
     onCreateCategory
 }: Props) => {
+    const t = useTranslations('TransactionHistory');
+    const locale = useLocale();
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: defaultValues,
@@ -75,7 +78,7 @@ export const TransactionForm = ({
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 mt-2">
                 <FormField
                     name="date"
                     control={form.control}
@@ -97,11 +100,11 @@ export const TransactionForm = ({
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Account
+                                {t('account-field')}
                             </FormLabel>
                             <FormControl>
                                 <Select
-                                    placeholder="Select an account"
+                                    placeholder={t('account-placeholder')}
                                     options={accountOptions}
                                     onCreate={onCreateAccount}
                                     value={field.value}
@@ -118,11 +121,11 @@ export const TransactionForm = ({
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Category
+                                {t('category-field')}
                             </FormLabel>
                             <FormControl>
                                 <Select
-                                    placeholder="Select a category"
+                                    placeholder={t('category-placeholder')}
                                     options={categoryOptions}
                                     onCreate={onCreateCategory}
                                     value={field.value}
@@ -139,12 +142,12 @@ export const TransactionForm = ({
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Payee
+                                {t('payee-field')}
                             </FormLabel>
                             <FormControl>
                                 <Input
                                     disabled={disabled}
-                                    placeholder="Add a payee"
+                                    placeholder={t('payee-placeholder')}
                                     {...field}
                                 />
                             </FormControl>
@@ -157,7 +160,7 @@ export const TransactionForm = ({
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Amount
+                                {t('amount-field')}
                             </FormLabel>
                             <FormControl>
                                 <AmountInput
@@ -175,14 +178,14 @@ export const TransactionForm = ({
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Notes
+                                {t('note-field')}
                             </FormLabel>
                             <FormControl>
                                 <Textarea
                                     {...field}
                                     value={field.value ?? ""}
                                     disabled={disabled}
-                                    placeholder="Optional notes"
+                                    placeholder={t('note-placeholder')}
                                 />
                             </FormControl>
                         </FormItem>
@@ -192,7 +195,7 @@ export const TransactionForm = ({
                     className="w-full mb-4"
                     disabled={disabled}
                 >
-                    {id ? "Save changes" : "Create transaction"}
+                    {id ? t('save-change') : t('create-transaction')}
                 </Button>
                 {!!id &&
                     <Button
@@ -203,7 +206,7 @@ export const TransactionForm = ({
                         variant={"outline"}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete transaction
+                        {t('delete-transaction')}
                     </Button>
                 }
             </form>
