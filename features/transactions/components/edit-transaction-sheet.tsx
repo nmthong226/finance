@@ -19,6 +19,7 @@ import { useGetCategories } from "@/features/categories/api/use-get-categories";
 import { useCreateCategory } from "@/features/categories/api/use-create-category";
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { useCreateAccount } from "@/features/accounts/api/use-create-account";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertTransactionSchema.omit({
     id: true,
@@ -27,6 +28,7 @@ const formSchema = insertTransactionSchema.omit({
 type FormValues = z.input<typeof formSchema>
 
 export const EditTransactionSheet = () => {
+    const t = useTranslations('TransactionHistory');
     const { isOpen, onClose, id } = useOpenTransaction();
     const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure?",
@@ -61,24 +63,26 @@ export const EditTransactionSheet = () => {
             }
         });
     }
-    const onDelete = async () => {{
-        const ok = await confirm();
-        if (ok) {
-            deleteMutation.mutate(undefined, {
-                onSuccess: () => {
-                    onClose();
-                }
-            })
+    const onDelete = async () => {
+        {
+            const ok = await confirm();
+            if (ok) {
+                deleteMutation.mutate(undefined, {
+                    onSuccess: () => {
+                        onClose();
+                    }
+                })
+            }
         }
-    }}
-    const isPending = 
-        editMutation.isPending || 
-        deleteMutation.isPending || 
+    }
+    const isPending =
+        editMutation.isPending ||
+        deleteMutation.isPending ||
         transactionQuery.isLoading ||
-        categoryMutation.isPending || 
+        categoryMutation.isPending ||
         accountMutation.isPending;
 
-    const isLoading = 
+    const isLoading =
         transactionQuery.isLoading ||
         categoryQuery.isLoading ||
         accountQuery.isLoading;
@@ -87,7 +91,7 @@ export const EditTransactionSheet = () => {
         accountId: transactionQuery.data.accountId,
         categoryId: transactionQuery.data.categoryId,
         amount: transactionQuery.data.amount.toString(),
-        date: transactionQuery.data.date ? new Date (transactionQuery.data.date) : new Date(),
+        date: transactionQuery.data.date ? new Date(transactionQuery.data.date) : new Date(),
         payee: transactionQuery.data.payee,
         notes: transactionQuery.data.notes,
     } : {
@@ -105,10 +109,10 @@ export const EditTransactionSheet = () => {
                 <SheetContent className="space-y-8">
                     <SheetHeader>
                         <SheetTitle>
-                            Edit Transaction
+                            {t('edit-transaction-header')}
                         </SheetTitle>
                         <SheetDescription>
-                            Edit an existing transaction
+                            {t('edit-transaction-content')}
                         </SheetDescription>
                     </SheetHeader>
                     {isLoading ?
