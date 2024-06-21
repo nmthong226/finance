@@ -11,12 +11,14 @@ import { Edit, MoreHorizontal, Trash } from "lucide-react"
 import { useConfirm } from "@/hooks/use-confirm"
 import { useOpenTransaction } from "@/features/transactions/hooks/use-open-transaction"
 import { useDeleteTransaction } from "@/features/transactions/api/use-delete-transaction"
+import { useTranslations } from "next-intl"
 
 type Props = {
     id: string,
 }
 
 export const Actions = ({ id }: Props) => {
+    const t = useTranslations('TransactionHistory');
     const { onOpen } = useOpenTransaction();
     const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure?",
@@ -44,14 +46,14 @@ export const Actions = ({ id }: Props) => {
                         onClick={() => onOpen(id)}
                     >
                         <Edit className="size-4 mr-2" />
-                        Edit
+                        {t('edit')}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         disabled={deleteMutation.isPending}
                         onClick={handleDelete}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete
+                        {t('delete')}
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
