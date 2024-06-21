@@ -100,7 +100,7 @@ export const columns: ColumnDef<ResponseType>[] = [
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    {t('account-column')}
+                    {t('payee-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
