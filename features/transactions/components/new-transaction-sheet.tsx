@@ -15,6 +15,7 @@ import { useCreateAccount } from "@/features/accounts/api/use-create-account";
 import { TransactionForm } from "@/features/transactions/components/transaction-form";
 import { insertTransactionSchema } from "@/db/schema";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertTransactionSchema.omit({
     id: true,
@@ -23,6 +24,7 @@ const formSchema = insertTransactionSchema.omit({
 type FormValues = z.input<typeof formSchema>
 
 export const NewTransactionSheet = () => {
+    const t = useTranslations('TransactionHistory');
     const { isOpen, onClose } = useNewTransaction();
     const createMutation = useCreateTransaction();
     const categoryQuery = useGetCategories();
@@ -57,10 +59,10 @@ export const NewTransactionSheet = () => {
             <SheetContent className="space-y-8">
                 <SheetHeader>
                     <SheetTitle>
-                        New Transaction
+                        {t('create-transaction-header')}
                     </SheetTitle>
                     <SheetDescription>
-                        Create new transaction.
+                        {t('create-transaction-content')}
                     </SheetDescription>
                 </SheetHeader>
                 {
