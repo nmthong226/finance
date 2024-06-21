@@ -20,7 +20,7 @@ const buttonVariant = cva(
                 light: "bg-white/10 hover:bg-white/20 hover:text-white text-white focus:bg-white/30",
                 dark: "bg-black/10 hover:bg-black/20 hover:text-black text-black focus:bg-black/30",
                 ghost: "bg-slate-100 hover:bg-slate-200 hover:text-black text-black focus:bg-slate-300",
-                transparent: "bg-transparent hover:bg-white/10 hover:text-black text-white dark:text-black focus:bg-white/20"
+                transparent: "bg-transparent hover:bg-white/10 text-white focus:bg-white/20"
             }
         },
         defaultVariants: {
