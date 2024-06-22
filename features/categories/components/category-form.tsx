@@ -14,6 +14,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertCategorySchema.pick({
     name: true,
@@ -36,6 +37,7 @@ export const CategoryForm = ({
     onDelete,
     disabled,
 }: Props) => {
+    const t = useTranslations('Category');
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: defaultValues,
@@ -48,19 +50,19 @@ export const CategoryForm = ({
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 mt-2">
                 <FormField
                     name="name"
                     control={form.control}
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Name
+                                {t('name-field')}
                             </FormLabel>
                             <FormControl>
                                 <Input
                                     disabled={disabled}
-                                    placeholder="e.g. Food, Travel, etc"
+                                    placeholder={t('name-placeholder')}
                                     {...field}
                                 />
                             </FormControl>
@@ -71,7 +73,7 @@ export const CategoryForm = ({
                     className="w-full mb-4"
                     disabled={disabled}
                 >
-                    {id ? "Save changes" : "Create category"}
+                    {id ? t('save-change') : t('create-category')}
                 </Button>
                 {!!id &&
                     <Button
@@ -82,7 +84,7 @@ export const CategoryForm = ({
                         variant={"outline"}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete category
+                        {t('delete-category')}
                     </Button>
                 }
             </form>

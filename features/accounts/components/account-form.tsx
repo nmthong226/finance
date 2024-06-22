@@ -14,6 +14,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertAccountSchema.pick({
     name: true,
@@ -36,6 +37,7 @@ export const AccountForm = ({
     onDelete,
     disabled,
 }: Props) => {
+    const t = useTranslations('Account');
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: defaultValues,
@@ -48,19 +50,19 @@ export const AccountForm = ({
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 mt-2">
                 <FormField
                     name="name"
                     control={form.control}
                     render={({ field }) => (
                         <FormItem className="mb-4">
                             <FormLabel>
-                                Name
+                                {t('name-field')}
                             </FormLabel>
                             <FormControl>
                                 <Input
                                     disabled={disabled}
-                                    placeholder="e.g. Cash, Bank, Credit Card"
+                                    placeholder={t('name-placeholder')}
                                     {...field}
                                 />
                             </FormControl>
@@ -71,7 +73,7 @@ export const AccountForm = ({
                     className="w-full mb-4"
                     disabled={disabled}
                 >
-                    {id ? "Save changes" : "Create account"}
+                    {id ? `${t('save-change')}` : `${t('create-account')}`}
                 </Button>
                 {!!id &&
                     <Button
@@ -82,7 +84,7 @@ export const AccountForm = ({
                         variant={"outline"}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete account
+                        {t('delete-account')}
                     </Button>
                 }
             </form>

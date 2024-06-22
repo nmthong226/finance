@@ -6,6 +6,7 @@ import {client} from "@/lib/hono"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Actions } from "./actions"
+import { useTranslations } from "next-intl"
 
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0];
 
@@ -35,13 +36,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     {
         accessorKey: "name",
         header: ({ column }) => {
+            const t = useTranslations('Account');
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                     className="p-0 m-0"
                 >
-                    Name
+                    {t('name-column')}
                     < ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )

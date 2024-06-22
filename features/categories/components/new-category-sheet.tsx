@@ -10,6 +10,7 @@ import { useCreateCategory } from "@/features/categories/api/use-create-category
 import { CategoryForm } from "@/features/categories/components/category-form";
 import { insertCategorySchema } from "@/db/schema";
 import { z } from "zod";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertCategorySchema.pick({
     name: true,
@@ -18,6 +19,7 @@ const formSchema = insertCategorySchema.pick({
 type FormValues = z.input<typeof formSchema>
 
 export const NewCategorySheet = () => {
+    const t = useTranslations('Category');
     const { isOpen, onClose } = useNewCategory();
     const mutation = useCreateCategory();
     const onSubmit = (values: FormValues) => {
@@ -32,10 +34,10 @@ export const NewCategorySheet = () => {
             <SheetContent className="space-y-8">
                 <SheetHeader>
                     <SheetTitle>
-                        New Category
+                        {t('create-category-title')}
                     </SheetTitle>
                     <SheetDescription>
-                        Create a new category to organize your transactions.
+                        {t('create-category-content')}
                     </SheetDescription>
                 </SheetHeader>
                 <CategoryForm

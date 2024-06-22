@@ -8,14 +8,16 @@ import {
     DialogHeader,
     DialogTitle
 } from "@/components/ui/dialog"
+import { useTranslations } from 'next-intl'
 
 export const useConfirm = (
     title: string,
     message: string,
 ): [() => JSX.Element, () => Promise<unknown>] => {
-    const [promise, setPromise] = useState<{resolve: (value: boolean) => void} | null>(null);
+    const t = useTranslations("Button");
+    const [promise, setPromise] = useState<{ resolve: (value: boolean) => void } | null>(null);
     const confirm = () => new Promise((resolve, reject) => {
-        setPromise({resolve});
+        setPromise({ resolve });
     });
     const handleClose = () => {
         setPromise(null);
@@ -44,12 +46,12 @@ export const useConfirm = (
                         onClick={handleCancel}
                         variant={"outline"}
                     >
-                        Cancel
+                        {t('cancel-button')}
                     </Button>
                     <Button
                         onClick={handleConfirm}
                     >
-                        Confirm
+                        {t('confirm-button')}
                     </Button>
                 </DialogFooter>
             </DialogContent>

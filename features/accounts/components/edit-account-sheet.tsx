@@ -14,6 +14,7 @@ import { useGetAccount } from "@/features/accounts/api/use-get-account";
 import { useEditAccount } from "@/features/accounts/api/use-edit-accounts";
 import { useDeleteAccount } from "@/features/accounts/api/use-delete-account";
 import { useConfirm } from "@/hooks/use-confirm";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertAccountSchema.pick({
     name: true,
@@ -22,10 +23,11 @@ const formSchema = insertAccountSchema.pick({
 type FormValues = z.input<typeof formSchema>
 
 export const EditAccountSheet = () => {
+    const t = useTranslations('Account');
     const { isOpen, onClose, id } = useOpenAccount();
     const [ConfirmDialog, confirm] = useConfirm(
-        "Are you sure?",
-        "You are about to delete this transaction"
+        t('delete-confirm-title'),
+        t('delete-confirm-content')
     )
     const accountQuery = useGetAccount(id);
     const editMutation = useEditAccount(id);
@@ -61,10 +63,10 @@ export const EditAccountSheet = () => {
                 <SheetContent className="space-y-8">
                     <SheetHeader>
                         <SheetTitle>
-                            Edit Account
+                            {t('edit-account-header')}
                         </SheetTitle>
                         <SheetDescription>
-                            Edit an existing account
+                            {t('edit-account-content')}
                         </SheetDescription>
                     </SheetHeader>
                     {isLoading ?

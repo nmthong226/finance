@@ -38,6 +38,10 @@
         "pie-chart": "Biểu đồ tròn",
         "not-found": "Hiện tại chưa có dữ liệu"
     },
+    "Button": {
+        "cancel-button": "Hủy",
+        "confirm-button": "Xác nhận"
+    },
     "TransactionHistory": {
         "title": "Lịch Sử Giao Dịch",
         "add": "Thêm GD",
@@ -77,5 +81,42 @@
         "save-change": "Lưu thay đổi",
         "create-transaction": "Tạo lịch sử giao dịch",
         "delete-transaction": "Xóa lịch sử giao dịch"
+    },
+    "Account": {
+        "title": "Danh Sách Tài Khoản",
+        "add-button": "Thêm tài khoản",
+        "name-column": "Tên tài khoản",
+        "edit-action": "Chỉnh sửa",
+        "delete-action": "Xóa",
+        "create-account-header": "Tạo tài khoản mới",
+        "create-account-content": "Tạo tài khoản mới để theo dõi lịch sử giao dịch",
+        "edit-account-header": "Chỉnh sửa tài khoản",
+        "edit-account-content": "Chỉnh sửa tài khoản này",
+        "name-field": "Tên tài khoản",
+        "name-placeholder": "Ví dụ: Thẻ tín dụng, Tài khoản ngân hàng, ...",
+        "create-button": "Tạo tài khoản ngân hàng",
+        "save-change": "Lưu thay đổi",
+        "create-account": "Tạo tài khoản",
+        "delete-account": "Xóa tài khoản",
+        "delete-confirm-title": "Bạn chắc chứ?",
+        "delete-confirm-content": "Bạn đang thực hiện xóa tài khoản này"
+    },
+    "Category": {
+        "title": "Danh Sách Danh Mục",
+        "add-button": "Thêm danh mục",
+        "name-column": "Tên danh mục",
+        "delete-confirm-title": "Bạn chắc chứ?",
+        "delete-confirm-content": "Bạn đang thực hiện xóa danh mục này",
+        "edit-action": "Chỉnh sửa",
+        "delete-action": "Xóa",
+        "create-category-title": "Tạo danh mục",
+        "create-category-content": "Tạo danh mục mới để quản lý lịch sử giao dịch",
+        "edit-category-title": "Chỉnh sửa danh mục",
+        "edit-category-content": "Chỉnh sửa danh mục này",
+        "name-field": "Tên danh mục",
+        "name-placeholder": "Ví dụ: Đồ ăn uống, Du lịch, ...",
+        "create-category": "Tạo danh mục",
+        "save-change": "Lưu thay đổi",
+        "delete-category": "Xóa danh mục"
     }
 }

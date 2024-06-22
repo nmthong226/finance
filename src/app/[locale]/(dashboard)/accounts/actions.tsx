@@ -11,16 +11,18 @@ import { Edit, MoreHorizontal, Trash } from "lucide-react"
 import { useOpenAccount } from "@/features/accounts/hooks/use-open-accounts"
 import { useDeleteAccount } from "@/features/accounts/api/use-delete-account"
 import { useConfirm } from "@/hooks/use-confirm"
+import { useTranslations } from "next-intl"
 
 type Props = {
     id: string,
 }
 
 export const Actions = ({ id }: Props) => {
+    const t = useTranslations('Account');
     const { onOpen } = useOpenAccount();
     const [ConfirmDialog, confirm] = useConfirm(
-        "Are you sure?",
-        "You are about to delete this account"
+        t('delete-confirm-title'),
+        t('delete-confirm-content')
     )
     const deleteMutation = useDeleteAccount(id);
     const handleDelete = async () => {
@@ -44,14 +46,14 @@ export const Actions = ({ id }: Props) => {
                         onClick={() => onOpen(id)}
                     >
                         <Edit className="size-4 mr-2" />
-                        Edit
+                        {t('edit-action')}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         disabled={deleteMutation.isPending}
                         onClick={handleDelete}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete
+                        {t('delete-action')}
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

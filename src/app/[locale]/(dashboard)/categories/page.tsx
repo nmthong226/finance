@@ -17,7 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useTranslations } from 'next-intl'
 
 const CategoriesPage = () => {
-    const t = useTranslations('TransactionHistory');
+    const t = useTranslations('Category');
     const newCategory = useNewCategory();
     const deleteCategories = useBulkDeleteCategories();
     const categoriesQuery = useGetCategories();
@@ -44,11 +44,11 @@ const CategoriesPage = () => {
             <Card className='border-none drop-shadow-sm'>
                 <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
                     <CardTitle className='text-xl line-clamp-1'>
-                        Categories Page
+                        {t('title')}
                     </CardTitle>
                     <Button size={"sm"} onClick={newCategory.onOpen}>
                         <Plus className='size-4 mr-2' />
-                        Add new
+                        {t('add-button')}
                     </Button>
                 </CardHeader>
                 <CardContent>

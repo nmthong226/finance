@@ -14,6 +14,7 @@ import { useEditCategory } from "@/features/categories//api/use-edit-categories"
 import { useDeleteCategory } from "@/features/categories//api/use-delete-category";
 import { useOpenCategory } from "@/features/categories/hooks/use-open-category";
 import { useConfirm } from "@/hooks/use-confirm";
+import { useTranslations } from "next-intl";
 
 const formSchema = insertCategorySchema.pick({
     name: true,
@@ -22,6 +23,7 @@ const formSchema = insertCategorySchema.pick({
 type FormValues = z.input<typeof formSchema>
 
 export const EditCategorySheet = () => {
+    const t = useTranslations('Category');
     const { isOpen, onClose, id } = useOpenCategory();
     const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure?",
@@ -37,16 +39,18 @@ export const EditCategorySheet = () => {
             }
         });
     }
-    const onDelete = async () => {{
-        const ok = await confirm();
-        if (ok) {
-            deleteMutation.mutate(undefined, {
-                onSuccess: () => {
-                    onClose();
-                }
-            })
+    const onDelete = async () => {
+        {
+            const ok = await confirm();
+            if (ok) {
+                deleteMutation.mutate(undefined, {
+                    onSuccess: () => {
+                        onClose();
+                    }
+                })
+            }
         }
-    }}
+    }
     const defaultValues = categoryQuery.data ? {
         name: categoryQuery.data.name,
     } : {
@@ -61,10 +65,10 @@ export const EditCategorySheet = () => {
                 <SheetContent className="space-y-8">
                     <SheetHeader>
                         <SheetTitle>
-                            Edit Category
+                            {t('edit-category-title')}
                         </SheetTitle>
                         <SheetDescription>
-                            Edit an existing category
+                            {t('edit-category-content')}
                         </SheetDescription>
                     </SheetHeader>
                     {isLoading ?

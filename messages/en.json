@@ -12,7 +12,6 @@
     "WelcomeMsg": {
         "title": "Welcome back",
         "intro": "This is your financial report page"
-
     },
     "Filter": {
         "all-accounts": "All accounts",
@@ -39,6 +38,10 @@
         "pie-chart": "Pie chart",
         "not-found": "No data for this period"
     },
+    "Button": {
+        "cancel-button": "Cancel",
+        "confirm-button": "Confirm"
+    },
     "TransactionHistory": {
         "title": "Transaction History",
         "add": "Add new",
@@ -62,11 +65,58 @@
         "date-select": "Pick a date",
         "amount-column": "Amount",
         "import-button": "Import",
-        "create-transaction-title": "New Transaction",
+        "create-transaction-header": "New Transaction",
+        "create-transaction-content": "You are about to make the new transaction",
+        "edit-transaction-header": "Edit Transaction",
+        "edit-transaction-content": "You are about to edit this transaction",
         "account-field": "Account",
+        "account-placeholder": "Select one",
         "category-field": "Category",
+        "category-placeholder": "Select one",
         "payee-field": "Payee",
+        "payee-placeholder": "Input the payee",
         "amount-field": "Amount",
-        "note-field": "Notes"
+        "note-field": "Notes",
+        "note-placeholder": "Optional notes",
+        "save-change": "Save changes",
+        "create-transaction": "Create Transaction",
+        "delete-transaction": "Delete Transaction"
+    },
+    "Account": {
+        "title": "Accounts Page",
+        "add-button": "Add new",
+        "name-column": "Name",
+        "edit-action": "Edit",
+        "delete-action": "Delete",
+        "create-account-header": "New Account",
+        "create-account-content": "Create new account to track your transactions",
+        "edit-account-header": "Edit Account",
+        "edit-account-content": "Edit an existing account",
+        "name-field": "Name",
+        "name-placeholder": "e.g. Cash, Bank, Credit Card",
+        "create-button": "Create account",
+        "save-change": "Save changes",
+        "create-account": "Create account",
+        "delete-account": "Delete account",
+        "delete-confirm-title": "Are you sure?",
+        "delete-confirm-content": "You are about to delete this account"
+    },
+    "Category": {
+        "title": "Categories Page",
+        "add-button": "Add new",
+        "name-column": "Name",
+        "delete-confirm-title": "Are you sure?",
+        "delete-confirm-content": "You are about to delete this category",
+        "edit-action": "Edit",
+        "delete-action": "Delete",
+        "create-category-title": "Create Category",
+        "create-category-content": "Create a new category to organize your transactions",
+        "edit-category-title": "Edit Category",
+        "edit-category-content": "Edit an existing category",
+        "name-field": "Name",
+        "name-placeholder": "e.g. Food, Travel, etc",
+        "create-category": "Create category",
+        "save-change": "Save changes",
+        "delete-category": "Delete category"
     }
 }

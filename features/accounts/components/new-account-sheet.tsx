@@ -19,7 +19,7 @@ const formSchema = insertAccountSchema.pick({
 type FormValues = z.input<typeof formSchema>
 
 export const NewAccountSheet = () => {
-    const t = useTranslations('TransitionHistory');
+    const t = useTranslations('Account');
     const { isOpen, onClose } = useNewAccount();
     const mutation = useCreateAccount();
     const onSubmit = (values: FormValues) => {
@@ -34,10 +34,10 @@ export const NewAccountSheet = () => {
             <SheetContent className="space-y-8">
                 <SheetHeader>
                     <SheetTitle>
-                        New Account
+                        {t('create-account-header')}
                     </SheetTitle>
                     <SheetDescription>
-                        Create new account to track your transactions.
+                        {t('create-account-content')}
                     </SheetDescription>
                 </SheetHeader>
                 <AccountForm

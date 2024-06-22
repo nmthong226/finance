@@ -11,16 +11,18 @@ import { Edit, MoreHorizontal, Trash } from "lucide-react"
 import { useOpenCategory } from "@/features/categories/hooks/use-open-category"
 import { useDeleteCategory } from "@/features/categories/api/use-delete-category"
 import { useConfirm } from "@/hooks/use-confirm"
+import { useTranslations } from "next-intl"
 
 type Props = {
     id: string,
 }
 
 export const Actions = ({ id }: Props) => {
+    const t = useTranslations('Category');
     const { onOpen } = useOpenCategory();
     const [ConfirmDialog, confirm] = useConfirm(
-        "Are you sure?",
-        "You are about to delete this category"
+        t('delete-confirm-title'),
+        t('delete-confirm-content')
     )
     const deleteMutation = useDeleteCategory(id);
     const handleDelete = async () => {
@@ -44,14 +46,14 @@ export const Actions = ({ id }: Props) => {
                         onClick={() => onOpen(id)}
                     >
                         <Edit className="size-4 mr-2" />
-                        Edit
+                        {t('edit-action')}
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         disabled={deleteMutation.isPending}
                         onClick={handleDelete}
                     >
                         <Trash className="size-4 mr-2" />
-                        Delete
+                        {t('delete-action')}
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
