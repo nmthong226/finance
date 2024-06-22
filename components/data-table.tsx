@@ -26,7 +26,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -43,6 +43,7 @@ export function DataTable<TData, TValue>({
     onDelete,
     disabled,
 }: DataTableProps<TData, TValue>) {
+    const locale = useLocale();
     const t = useTranslations('TransactionHistory');
     const [ConfirmDialog, confirm] = useConfirm(
         t('confirm-question'),
@@ -68,17 +69,30 @@ export function DataTable<TData, TValue>({
             columnFilters,
             rowSelection
         },
-    })
-
+    });
+    const localeFilterKey = (filterKey: string, locale: string) => {
+        const translations: { [key: string]: { [locale: string]: string } } = {
+            payee: {
+                vn: "người nhận",
+                en: "payee"
+            },
+            name: {
+                vn: "tên",
+                en: "name"
+            }
+        };
+        const filterKeyName = translations[filterKey]?.[locale] || translations['name'][locale] || 'name';
+        return `${t('filter')} ${filterKeyName}...`;
+    };
     return (
         <div>
             <ConfirmDialog />
             <div className="flex items-center py-4">
                 <Input
-                    placeholder={`${t('filter')} ${filterKey}...`}
-                    value={(table.getColumn("payee")?.getFilterValue() as string) ?? ""}
+                    placeholder={localeFilterKey(filterKey, locale)}
+                    value={(table.getColumn(`${filterKey}`)?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("payee")?.setFilterValue(event.target.value)
+                        table.getColumn(`${filterKey}`)?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
