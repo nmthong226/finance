@@ -122,5 +122,13 @@
     "ToolTip": {
         "income": "Thu nhập",
         "expenses": "Chi phí"
+    },
+    "SignIn": {
+        "home-page": "Trang chủ",
+        "contact": "Liên hệ"
+    },
+    "SignUp": {
+        "home-page": "Trang chủ",
+        "contact": "Liên hệ"
     }
 }

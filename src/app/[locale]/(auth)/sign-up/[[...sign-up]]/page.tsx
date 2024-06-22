@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { SignUp, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { CountryButton } from "@/components/country-button";
 
 export default function Page() {
   const locale = useLocale();
+  const t = useTranslations('SignUp');
   const pathSignUp = locale === "vn" ? "/vn/sign-up" : "/en/sign-up";
   const pathSignIn = locale === "vn" ? "/vn/sign-in" : "/en/sign-in";
   return (
@@ -21,10 +22,10 @@ export default function Page() {
         </div>
         <div className="flex lg:flex-row flex-col justify-between mt-8 items-center bg-slate-100 rounded-xl w-96">
           <div className="mx-2">
-            Home Page
+            {t('home-page')}
           </div>
           <div className="mx-2">
-            Contact
+            {t('contact')}
           </div>
           <CountryButton variant={"ghost"} />
         </div>

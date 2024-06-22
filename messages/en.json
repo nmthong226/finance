@@ -122,5 +122,13 @@
     "ToolTip": {
         "income": "Income",
         "expenses": "Expenses"
+    },
+    "SignIn": {
+        "home-page": "Home page",
+        "contact": "Contact"
+    },
+    "SignUp": {
+        "home-page": "Home page",
+        "contact": "Contact"
     }
 }
