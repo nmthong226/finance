@@ -118,5 +118,9 @@
         "create-category": "Create category",
         "save-change": "Save changes",
         "delete-category": "Delete category"
+    },
+    "ToolTip": {
+        "income": "Income",
+        "expenses": "Expenses"
     }
 }

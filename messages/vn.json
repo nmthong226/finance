@@ -118,5 +118,9 @@
         "create-category": "Tạo danh mục",
         "save-change": "Lưu thay đổi",
         "delete-category": "Xóa danh mục"
+    },
+    "ToolTip": {
+        "income": "Thu nhập",
+        "expenses": "Chi phí"
     }
 }
