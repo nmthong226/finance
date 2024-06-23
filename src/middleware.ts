@@ -1,14 +1,20 @@
-// middleware-intl.js
+import {clerkMiddleware, createRouteMatcher} from '@clerk/nextjs/server';
 import createMiddleware from 'next-intl/middleware';
-
-export default createMiddleware({
-  // Supported locales
+ 
+const intlMiddleware = createMiddleware({
   locales: ['en', 'vn'],
-  // Default locale
-  defaultLocale: 'vn'
+  defaultLocale: 'en'
 });
-
+ 
+const isProtectedRoute = createRouteMatcher(['/:locale/(.*)']);
+ 
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
+ 
+  return intlMiddleware(req);
+});
+ 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(en|vn)/:path*'],
+  matcher: ['/', '/(vn|en)/:path*']
 };
