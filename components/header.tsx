@@ -11,6 +11,7 @@ import { useLocale } from 'next-intl'
 
 const Header = () => {
   const locale = useLocale();
+  const signOutUrl = `/${locale}/sign-in`
   return (
     <header className='bg-gradient-to-b from-blue-700 to-blue-500 px-4 py-8 lg:px-14 pb-36'>
       <div className='max-w-screen-2xl mx-auto'>
@@ -23,7 +24,7 @@ const Header = () => {
             <ModeToggle/>
             <CountryButton variant={"transparent"} />
             <ClerkLoaded>
-              <UserButton afterSignOutUrl='/' />
+              <UserButton afterSignOutUrl={signOutUrl} />
             </ClerkLoaded>
             <ClerkLoading>
               <Loader2 className='size-8 animate-spin text-slate-400' />
