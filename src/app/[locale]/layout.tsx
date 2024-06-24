@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import {
   ClerkProvider,
+  SignIn,
 } from '@clerk/nextjs';
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
